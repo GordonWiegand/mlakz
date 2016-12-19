@@ -1,3 +1,10 @@
+################################
+# Peter Pank 
+# 16-12-19
+# evocation by passing pageNo %in% 1:10
+################################
+
+
 setwd("/Volumes/hd2/mlakz")
 
 refDate <- as.Date("2016-11-25")
@@ -79,14 +86,14 @@ for (i in 1:length(hkList)){
             lNeigh <- dTourZub$AKZ_HAUSKEY
         }
 
-        if (posAct < noNeigh) {
+        if (posAct <= noNeigh) {
             dTourZub <- dZub[((dZub$AKZ_DISTR_ZIP == distZip) & (dZub$AKZ_TOUR_NR == tour)),] 
             dTourZub <- dTourZub[(dTourZub$AKZ_POS %in% 1:10 ),] 
             dTourZub <- dTourZub[(dTourZub$AKZ_POS != posAct),]
             lNeigh <- dTourZub$AKZ_HAUSKEY
         } 
 
-        if (posAct > posMax - noNeigh) {
+        if (posAct >= posMax - noNeigh) {
             dTourZub <- dZub[((dZub$AKZ_DISTR_ZIP == distZip) & (dZub$AKZ_TOUR_NR == tour)),] 
             dTourZub <- dTourZub[(dTourZub$AKZ_POS %in% ((posMax - 10):posMax)),] 
             dTourZub <- dTourZub[(dTourZub$AKZ_POS != posAct),]
